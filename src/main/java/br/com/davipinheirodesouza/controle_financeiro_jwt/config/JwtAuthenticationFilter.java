@@ -29,7 +29,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     }
 
-    @Override
+    @Override 
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
         String authorizationHeader = request.getHeader("Authorization");
@@ -56,12 +56,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             }catch(JWTVerificationException  e){
 
                 response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Token JWT Inválido ou Expirado!");
+                return;
 
             }
 
-            filterChain.doFilter(request, response);
-
         }
+        
+        filterChain.doFilter(request, response);
 
     }
 }
