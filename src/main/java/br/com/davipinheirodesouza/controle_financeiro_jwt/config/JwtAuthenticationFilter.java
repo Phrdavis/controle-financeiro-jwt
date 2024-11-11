@@ -13,12 +13,10 @@ import com.auth0.jwt.exceptions.JWTVerificationException;
 import br.com.davipinheirodesouza.controle_financeiro_jwt.components.JwtUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @Component
-@WebFilter("/private/*")
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
     
     private final JwtUtil jwtUtil;
